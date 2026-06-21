@@ -1,6 +1,6 @@
 # Pipeline Builder
 
-VectorShift Frontend Technical Assessment — a visual pipeline builder where you drag nodes onto a canvas, connect them with edges, and submit the graph to a FastAPI backend for validation.
+A visual pipeline builder where you drag nodes onto a canvas, connect them with edges, and submit the graph to a FastAPI backend for validation.
 
 ## Project structure
 
