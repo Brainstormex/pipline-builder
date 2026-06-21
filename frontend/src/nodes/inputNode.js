@@ -6,13 +6,13 @@ export const InputNode = ({ id, data }) => {
   const [inputType, setInputType] = useState(data.inputType || 'Text');
 
   return (
-    <BaseNode title="Input" outputs={[{ id: `${id}-value` }]}>
-      <label>
-        Name:
+    <BaseNode title="Input" accent="#6366f1" outputs={[{ id: `${id}-value` }]}>
+      <label className="node-field">
+        <span>Name</span>
         <input type="text" value={currName} onChange={(e) => setCurrName(e.target.value)} />
       </label>
-      <label>
-        Type:
+      <label className="node-field">
+        <span>Type</span>
         <select value={inputType} onChange={(e) => setInputType(e.target.value)}>
           <option value="Text">Text</option>
           <option value="File">File</option>

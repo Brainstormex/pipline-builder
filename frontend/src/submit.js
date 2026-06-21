@@ -1,10 +1,9 @@
-// submit.js
-
 export const SubmitButton = () => {
-
-    return (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <button type="submit">Submit</button>
-        </div>
-    );
-}
+  return (
+    <footer className="submit-bar">
+      <button className="submit-button" type="submit">
+        Submit
+      </button>
+    </footer>
+  );
+};

@@ -5,9 +5,232 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #0f172a;
+  color: #f8fafc;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.toolbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toolbar-logo {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6366f1;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+}
+
+.toolbar-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.toolbar-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.draggable-node {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s, transform 0.15s;
+  user-select: none;
+}
+
+.draggable-node:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.draggable-node:active {
+  cursor: grabbing;
+}
+
+.draggable-node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--node-accent, #6366f1);
+  flex-shrink: 0;
+}
+
+.canvas-wrapper {
+  width: 100%;
+  height: 100%;
+  background: #f8fafc;
+}
+
+.react-flow__node.selected .base-node {
+  box-shadow: 0 0 0 2px var(--node-accent, #6366f1), 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+
+.base-node {
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid var(--node-accent, #6366f1);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  font-size: 13px;
+  color: #1e293b;
+}
+
+.base-node-header {
+  padding: 8px 12px 6px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.base-node-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--node-accent, #6366f1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.base-node-body {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.node-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.node-field span {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.node-field input,
+.node-field select {
+  padding: 6px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #f8fafc;
+  color: #1e293b;
+  outline: none;
+}
+
+.node-field input:focus,
+.node-field select:focus {
+  border-color: var(--node-accent, #6366f1);
+}
+
+.node-description {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.node-handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: #fff !important;
+  border: 2px solid #94a3b8 !important;
+}
+
+.node-handle:hover {
+  border-color: var(--node-accent, #6366f1) !important;
+  background: var(--node-accent, #6366f1) !important;
+}
+
+.text-node {
+  min-width: 200px;
+}
+
+.submit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  background: #1e293b;
+  border-top: 1px solid #334155;
+}
+
+.submit-button {
+  padding: 10px 32px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.submit-button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.canvas-controls {
+  background: #fff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.canvas-minimap {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+}
+
+.react-flow__edge-path {
+  stroke: #6366f1;
+}
+
+.react-flow__connection-path {
+  stroke: #6366f1;
 }
